@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/application.css">
+    <script type="text/javascript" src="assets/application.js"></script>
+    <title>Checking out HTML5</title>
+  </head>
+  <body>
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; z-index:1040; left: 0; border: 0; position:fixed;" src="assets/forkme_left_orange_ff7600.png" alt="Fork me on GitHub"></a>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="index.html">Html5 hacked</a>
+          <ul class="nav pull-right">
+            <li class="active"><a href="#">Have any questions? Contact me</a></li>
+        </div>
+      </div>
+    </div>
+    <div class='container'>
+      <h3>history API</h3>
+      <div class='row'>
+        <div class='span9'>
+          <div class='well form-inline'>
+            <h4>history.pushState()</h4>
+            <input type='text' id='url' placeholder ='Enter url'/>
+            <button type='submit' class="btn" id="test1">Push State</button>
+          </div>
+          <div class='well form-inline'>
+            <h4>history.pushState()</h4>
+            <input type='text' id='url' placeholder ='Enter url'/>
+            <button type='submit' class="btn" id="test1">Push State</button>
+          </div>
+          <div class='well form-inline'>
+            <h4>history.pushReplace()</h4>
+            <input type='text' id='replace-url' placeholder ='Replace url'/>
+            <button type='submit' class="btn" id="test2">Replace State</button>
+          </div>
+          <div class='row'>
+            <div class='well span2'>
+              <h4>history.back()</h4>
+              <button type='submit' class="btn" id="test3">history Back</button>
+            </div>
+            <div class='well span2 offset1'>
+              <h4>history.forward()</h4>
+              <button type='submit' class="btn" id="test4">history Forward</button>
+            </div>
+            <div class='well span2 pull-right'>
+              <h4>history.go()</h4>
+              <button type='submit' class="btn" id="test5">history Go</button>
+            </div>
+          </div>
+        </div>
+        <div class='span2 alert' id='message-board'>
+          <h5>Message Board</h5>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script type='text/javascript'>
+  //pushState
+  $('#test1').on('click', function() {
+    var newTitle = $('#test1').data('title');
+    var url = $('#url').val();
+    history.pushState(null, newTitle, url)
+    notify(url + ' pushed' + '<br/> History Length: '+ history.length);
+  });
+
+  //replaceState
+  $('#test2').on('click', function(){
+    var url = $('#replace-url').val();
+    history.replaceState(null, 'New Title', url);
+    notify(url + ' replaced' + '<br/> History Length: '+ history.length);
+  })
+
+  $('#test3').on('click', function(){
+    history.back();
+  })
+
+  $('#test4').on('click', function(){
+    history.forward();
+  })
+
+  $('#test5').on('click', function(){
+    history.go(-2);
+  })
+
+</script>
+
